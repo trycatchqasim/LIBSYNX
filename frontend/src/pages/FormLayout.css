@@ -1,0 +1,155 @@
+/* General layout for all forms */
+.container {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  min-height: 100vh;
+}
+
+/* Common Header for all pages */
+.header {
+  background-color: #c62828;
+  padding: 20px;
+  text-align: center;
+}
+
+.header h1 {
+  color: white;
+  margin: 0;
+  font-size: 28px;
+}
+
+/* Card-style form wrapper */
+.form-card {
+  background-color: white;
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Reusable form title */
+.form-card h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Form fields layout */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Common input/textarea styles */
+.form input,
+.form textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+/* Textarea specifics */
+.form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Submit button style */
+.form button {
+  padding: 12px;
+  background-color: #2e7d32;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form button:hover {
+  background-color: #1b5e20;
+}
+
+/* Message container */
+.message {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Success & Error message styles */
+.message.success {
+  color: #2e7d32;
+  background-color: #e8f5e9;
+  border: 1px solid #2e7d32;
+}
+
+.message.error {
+  color: #c62828;
+  background-color: #ffebee;
+  border: 1px solid #c62828;
+}
+
+/* Deletion list styles */
+.delete-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.delete-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #fafafa;
+  transition: box-shadow 0.3s ease;
+}
+
+.delete-list li:hover {
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.delete-list li button {
+  background-color: #2e7d32;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.delete-list li button:hover {
+  background-color: #1b5e20;
+}
+
+select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  color: #333;
+  background-color: #f9f9f9;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  margin: 12px 0;
+  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  font-family: inherit;
+}
+
+select:focus {
+  border-color: #5c6bc0;
+  background-color: #fff;
+  outline: none;
+  box-shadow: 0 0 4px rgba(92, 107, 192, 0.2);
+}
