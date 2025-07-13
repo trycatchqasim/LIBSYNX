@@ -26,3 +26,22 @@ A full-stack **Library Management System** built using **Node.js (Express)** for
 | **Express.js**   | RESTful API framework      |
 | **SQL Server**   | Relational database        |
 
+---
+![Screenshot](./assets/images/landingpage.png)
+
+---
+![Screenshot](./assets/images/signuppage.png)
+
+---
+![Screenshot](./assets/images/loginpage.png)
+
+---
+![Screenshot](./assets/images/reviews.png)
+
+---
+![Screenshot](./assets/images/userhandling.png)
+
+---
+![Screenshot](./assets/images/admin.png)
+
+
