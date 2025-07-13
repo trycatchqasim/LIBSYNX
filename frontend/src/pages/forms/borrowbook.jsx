@@ -79,15 +79,7 @@ const BorrowFormWithUserIdFromURL = () => {
       <div className="form-card">
         <h2>Borrow Book</h2>
         <form className="form" onSubmit={handleSubmit}>
-          {/* Display User ID as disabled and hidden input */}
-          <input
-            type="number"
-            placeholder="User ID"
-            value={formData.UserID}
-            disabled
-          />
-          <input type="hidden" name="UserID" value={formData.UserID} />
-
+      
           {/* Book Dropdown */}
           <div className="form-group">
             <label htmlFor="BookID">Select Book</label>
@@ -101,21 +93,14 @@ const BorrowFormWithUserIdFromURL = () => {
               <option value="">-- Select a book --</option>
               {books.map((book) => (
                 <option key={book.BookID} value={book.BookID}>
-                  {book.Title} by {book.AuthorName || "Unknown Author"} ({book.AvailableCopies} available)
+                  {book.Title}...({book.AvailableCopies} available)
                 </option>
               ))}
             </select>
           </div>
 
 
-{/* Borrowing Status (Fixed to "Borrowed") */}
-<input
-  type="text"
-  name="Status"
-  value="Borrowed"
-  readOnly
-  className="info-input"
-/>
+
 
           <button type="submit">Insert Borrow Record</button>
         </form>
