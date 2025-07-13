@@ -105,17 +105,6 @@ const ReturnBookForm = ({ userId }) => {
               </select>
             </div>
 
-            {/* Status Field (Fixed) */}
-            <div className="form-group">
-              <label>Status</label>
-              <input
-                type="text"
-                name="Status"
-                value="Returned"
-                readOnly
-                className="info-input"
-              />
-            </div>
 
             <button type="submit" disabled={submitting}>
               {submitting ? "Processing..." : "Return Book"}
