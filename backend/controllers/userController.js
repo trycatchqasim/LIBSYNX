@@ -571,7 +571,8 @@ exports.insertBorrowingHistory = async (req, res) => {
 exports.insertUser = async (req, res) => {
   let { FirstName, LastName, Username, PasswordHash, RoleID } = req.body;
 
-  RoleID = Number(RoleID);
+  RoleID = RoleID ? Number(RoleID) : 2;
+
   try {
     const pool = await getConnection();
 
@@ -581,8 +582,8 @@ exports.insertUser = async (req, res) => {
       .input("LastName", sql.NVarChar, LastName)
       .input("Username", sql.NVarChar, Username)
       .input("PasswordHash", sql.NVarChar, PasswordHash)
-      .input("RoleID", sql.Int, RoleID)
-      .execute("InsertUser"); // Calling the stored procedure
+      .execute("InsertUser");
+
     console.log("✅ User Inserted Successfully:", result.recordset);
     res
       .status(201)
@@ -593,6 +594,7 @@ exports.insertUser = async (req, res) => {
       .json({ error: error.message || "Database insertion error" });
   }
 };
+
 
 exports.DeleteUser = async (req, res) => {
   const userId = req.params.id;
@@ -610,8 +612,6 @@ exports.DeleteUser = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-
-
 exports.loginUser = async (req, res) => {
   const { Username, PasswordHash } = req.body;
 
@@ -622,13 +622,18 @@ exports.loginUser = async (req, res) => {
       .input("Username", sql.NVarChar, Username)
       .input("PasswordHash", sql.NVarChar, PasswordHash)
       .query(
-        "SELECT UserID, FirstName, LastName, RoleID FROM Users WHERE Username = @Username AND PasswordHash = @PasswordHash"
+        "SELECT UserID, FirstName, LastName, RoleID, AccountStatus FROM Users WHERE Username = @Username AND PasswordHash = @PasswordHash"
       );
 
     const user = result.recordset[0];
 
     if (!user) {
       return res.status(401).json({ error: "Invalid username or password" });
+    }
+
+    // Check if account is blocked (AccountStatus = 0)
+    if (user.AccountStatus === 0 || user.AccountStatus === false) {
+      return res.status(403).json({ error: "Your account has been blocked. Please contact the administrator." });
     }
 
     res.status(200).json({
